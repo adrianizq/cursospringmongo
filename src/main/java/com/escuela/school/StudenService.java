@@ -3,7 +3,9 @@ package com.escuela.school;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -18,8 +20,8 @@ public class StudenService {
 
     }
 
-    List <Student> getStudentsByName(String name){
-        return studentRepository.findByName(name);
+    List <Student> getStudentsByFirstName(String name){
+        return studentRepository.findByFirstName(name);
 
     }
 
@@ -50,6 +52,8 @@ public class StudenService {
             s = studentList.get(0);
             return s;
         }
+        //antes de guardar un estudiante darle la fecha de creacion
+        student.setCreated(LocalDateTime.now());
         return studentRepository.save(student);
     }
     //Crear un metodo para actualizar un student
@@ -62,10 +66,13 @@ public class StudenService {
         if (studentList.size()>0){ //El student si existe
 
             Student stTemp = studentList.get(0);
-            stTemp.setName(student.getName());
-            stTemp.setAge(student.getAge());
-            stTemp.setGpa(student.getGpa());
-            stTemp.setFullTime(student.isFullTime());
+            stTemp.setFirstName(student.getFirstName());
+            stTemp.setLastName(student.getLastName());
+            stTemp.setAddress(student.getAddress());
+            stTemp.setGender(student.getGender());
+            stTemp.setFavouriteSubjects(student.getFavouriteSubjects());
+            stTemp.setTotalSpentInBooks(student.getTotalSpentInBooks());
+
 
             return studentRepository.save(stTemp);
         }

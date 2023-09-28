@@ -25,9 +25,9 @@ public class StudentController {
         return  studenService.getStudentsByEmail(email);
     }
 
-    @GetMapping("/byname")
-    public List<Student> getAllByName(@RequestParam("name") String name ){
-        return  studenService.getStudentsByName(name);
+    @GetMapping("/byfirstname")
+    public List<Student> getAllByFirstName(@RequestParam("name") String name ){
+        return  studenService.getStudentsByFirstName(name);
     }
 
     @GetMapping("/byid")

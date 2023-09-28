@@ -8,6 +8,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
+
 
 @Document
 @Data
@@ -20,19 +24,32 @@ public class Student {
     @Indexed(unique = true)
     private String email;
 
-    private String name;
-    private int age;
-    private double gpa;
-    private boolean fullTime;
+    private String firstName;
 
-    public Student(String email, String name, int age, double gpa, boolean fullTime) {
+    private String lastName;
+
+    private  Gender gender;
+
+    private Address address;
+
+    private List<String> favouriteSubjects;
+
+    private BigDecimal totalSpentInBooks;
+
+    private LocalDateTime created;
+
+    private ImageData imageData;
+
+    public Student(String email, String firstName, String lastName, Gender gender, Address address, List<String> favouriteSubjects, BigDecimal totalSpentInBooks, LocalDateTime created) {
         this.email = email;
-        this.name = name;
-        this.age = age;
-        this.gpa = gpa;
-        this.fullTime = fullTime;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.address = address;
+        this.favouriteSubjects = favouriteSubjects;
+        this.totalSpentInBooks = totalSpentInBooks;
+        this.created = created;
     }
-
 }
 
 
