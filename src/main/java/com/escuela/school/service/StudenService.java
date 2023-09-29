@@ -1,11 +1,12 @@
-package com.escuela.school;
+package com.escuela.school.service;
 
+import com.escuela.school.model.Student;
+import com.escuela.school.repository.StudentRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -15,27 +16,27 @@ public class StudenService {
 
     //tipo_retorno nombre_metodo (par1, par2)
     //Obtener la lista de los estudiantes
-    List <Student> getStudents(){
+    public List <Student> getStudents(){
         return studentRepository.findAll();
 
     }
 
-    List <Student> getStudentsByFirstName(String name){
+    public List <Student> getStudentsByFirstName(String name){
         return studentRepository.findByFirstName(name);
 
     }
 
-    List <Student> getStudentsByEmail(String email){
+    public List <Student> getStudentsByEmail(String email){
         return studentRepository.findByEmail(email);
 
     }
 
-    Student getOneStudentById(String id){
+    public Student getOneStudentById(String id){
         return studentRepository.findById(id).orElse(null);
     }
 
     //crar un metodo para guardar un nuevo estudiante
-    Student saveStudent(Student student){
+    public Student saveStudent(Student student){
         //cuando llega el student no va a tener id
 
         //antes de guardar el student revisar si el email ya existe
@@ -57,7 +58,7 @@ public class StudenService {
         return studentRepository.save(student);
     }
     //Crear un metodo para actualizar un student
-    Student updateStudent(Student student){
+    public Student updateStudent(Student student){
         //Actualizar un student, el student debe existir
         //si no existe entonces no hacemos nada retornar un estudiante nulo
         List <Student> studentList = new ArrayList<>();
@@ -81,7 +82,7 @@ public class StudenService {
     }
 
     //Crear un metodo para elminar un student
-    Student deleteStudent(Student student){
+    public Student deleteStudent(Student student){
         //Para eliminar un student, el student debe exitir
 
         List <Student> studentList = new ArrayList<>();

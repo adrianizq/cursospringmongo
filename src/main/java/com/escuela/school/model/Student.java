@@ -1,4 +1,4 @@
-package com.escuela.school;
+package com.escuela.school.model;
 
 
 import lombok.AllArgsConstructor;
@@ -28,7 +28,7 @@ public class Student {
 
     private String lastName;
 
-    private  Gender gender;
+    private Gender gender;
 
     private Address address;
 

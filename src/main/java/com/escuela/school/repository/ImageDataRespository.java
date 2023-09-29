@@ -1,5 +1,6 @@
-package com.escuela.school;
+package com.escuela.school.repository;
 
+import com.escuela.school.model.ImageData;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

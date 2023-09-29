@@ -1,4 +1,4 @@
-package com.escuela.school;
+package com.escuela.school.model;
 
 public enum Gender {
     MALE,FEMALE

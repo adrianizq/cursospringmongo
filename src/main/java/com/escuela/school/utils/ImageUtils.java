@@ -1,4 +1,4 @@
-package com.escuela.school;
+package com.escuela.school.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.util.zip.Deflater;
