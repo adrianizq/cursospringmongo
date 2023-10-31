@@ -31,10 +31,17 @@ public class StudentController {
         return  studenService.getStudentsByFirstName(name);
     }
 
+
+
     @GetMapping("/byid")
     public Student getOneById(@RequestParam("id") String id){
         return studenService.getOneStudentById(id);
     }
+    @GetMapping("/byfirstnamelistcourse")
+    public Student getOneByNameAndListCourse(@RequestParam("firstName") String firstName){
+        return studenService.getStudentByFirstNameAndListCourses(firstName);
+    }
+    //getStudentByFirstNameAndListCourses
 
     //Metodo para guardar un estudiante POST
     @PostMapping("/save")

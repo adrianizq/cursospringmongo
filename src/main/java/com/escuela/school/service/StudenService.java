@@ -1,6 +1,8 @@
 package com.escuela.school.service;
 
+import com.escuela.school.model.Course;
 import com.escuela.school.model.Student;
+import com.escuela.school.repository.CourseRepository;
 import com.escuela.school.repository.StudentRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class StudenService {
     private final StudentRepository studentRepository;
+    private final CourseRepository courseRepository;
 
     //tipo_retorno nombre_metodo (par1, par2)
     //Obtener la lista de los estudiantes
@@ -61,8 +64,7 @@ public class StudenService {
     public Student updateStudent(Student student){
         //Actualizar un student, el student debe existir
         //si no existe entonces no hacemos nada retornar un estudiante nulo
-        List <Student> studentList = new ArrayList<>();
-        studentList = studentRepository.findByEmail(student.getEmail());
+        List <Student> studentList= studentRepository.findByEmail(student.getEmail());
 
         if (studentList.size()>0){ //El student si existe
 
@@ -94,6 +96,19 @@ public class StudenService {
             studentRepository.delete(stTemp);
         }
         return stTemp;
+    }
+
+
+    public Student getStudentByFirstNameAndListCourses(String name){
+        Student student =  studentRepository.findByFirstName(name).get(0);
+        List<Course> listCourses = new ArrayList<Course>();
+
+        for (String ids :student.getCourseIds()) {
+            Course course = courseRepository.findById(ids).orElse(null);
+            listCourses.add(course);
+        }
+        student.setCourses(listCourses);
+        return student;
     }
 
 }
